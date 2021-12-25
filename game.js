@@ -39,7 +39,8 @@ ctx.stroke()
 
 // Draw X or O
 function draw(ch,boxNum,xc,yc) {
-    if(!mp[boxNum]){
+    if(typeof mp[boxNum] == 'undefined'){
+        op ^= 1
         mp[boxNum] = {ch,xc,yc}
         if(ch == 'X'){
             ctx.strokeStyle = "red"
@@ -221,7 +222,6 @@ canvas.addEventListener('click', function(event){
     }
 
     ch = op ? 'X':'O'
-    op ^= 1
     draw(ch,boxNum,centreX,centreY)
     gameOver('X')
     gameOver('O')
